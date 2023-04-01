@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Employee Profile</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+      background-image: url('https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvay0xMC1qZy0xMjg0NDczNTQ0LWwwMTEwMTUuanBn.jpg');
+
+		}
+		img{
+		opacity:0.5;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			color: #333;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 50px auto;
+			background-color: black;
+			padding: 20px;
+			box-shadow: 0 0 10px rgb(255, 249, 249);
+		}
+
+		.employee-info {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.employee-info img {
+			max-width: 120px;
+			border-radius: 50%;
+			margin-bottom: 20px;
+		}
+
+		.employee-info h2 {
+			font-size: 24px;
+			margin-bottom: 10px;
+			color: white;
+		}
+
+		.employee-info p {
+			font-size: 16px;
+			color: white;
+			margin-bottom: 5px;
+		}
+
+		.employee-info ul {
+			list-style: none;
+			padding: 0;
+			margin-bottom: 20px;
+		}
+
+		.employee-info li {
+			display: inline-block;
+			margin-right: 10px;
+		}
+
+		.employee-info li:last-child {
+			margin-right: 0;
+		}
+
+		.employee-info li span {
+			color: white;
+		}
+
+<!--		 nav {-->
+<!--  background-color: white;-->
+<!--  height: 50px;-->
+<!--}-->
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li {
+  float: right;
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: black;
+}
+
+	</style>
+</head>
+<body>
+
+	 <nav>
+        <ul>
+          <li><a href="{% url 'Logout' %}">Log Out</a></li>
+          <li><a href="{% url 'view_payroll' %}">Payroll</a></li>
+          <li><a href="{% url 'leaves' %}">Leave Application</a></li>
+        </ul>
+      </nav>
+	 {% block main %}
+	<div class="container">
+		<div class="employee-info">
+      <h2>Profile</h2>
+			<img src="{% static '014.png' %}" alt="Employee Photo">
+			<h2>{{employee.user.first_name}} {{employee.user.last_name}}</h2>
+			<ul>
+				<li style="color:#fff;"><span>Id:</span> {{employee.emp_id}} </li><br><br>
+				<li style="color:#fff;"><span>Email:</span> {{employee.email}} </li><br><br>
+				<li style="color:#fff;"><span>Department:</span> {{employee.empdept}}</li><br><br>
+				<li style="color:#fff;"><span>Designation:</span> {{employee.designation}}</li><br><br>
+				<li style="color:#fff;"><span>Phone No:</span> {{employee.contact}}</li><br><br>
+				<li style="color:#fff;"><span>Joining Date:</span> {{employee.joindate}}</li><br><br>
+			</ul>
+
+		</div>
+	</div>
+{% endblock %}
+</body>
+</html>
